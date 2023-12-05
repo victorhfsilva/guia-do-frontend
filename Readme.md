@@ -43,12 +43,29 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Black Hat SEO](./HTML/Black%20Hat%20SEO.md)
 - [Acessibilidade](./HTML/Acessibilidade.md)
 - [ARIA](./HTML/ARIA.md)
+- [Internacionalização](./HTML/Internacionalização.md)
 
 #### Extras:
 
 - [HTML: Mdn Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn/HTML)
 - [Learn HTML: W3Schools](https://www.w3schools.com/html/default.asp)
 - [HTML References: W3Schools](https://www.w3schools.com/tags/default.asp)
+
+### 3. CSS
+
+- [Estrutura Básica](./CSS/Estrutura%20Básica.md)
+- [Reset CSS](./CSS/Reset%20CSS.md)
+- [Organização](./CSS/Organização.md)
+- [Modelo de Caixa](./CSS/Modelo%20de%20Caixa.md)
+- [Cores](./CSS/Cores.md)
+- [Fontes](./CSS/Fontes.md)
+- [Position] 
+
+#### Extras:
+
+- [CSS: Mdn Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn/CSS)
+- [Learn CSS: W3Schools](https://www.w3schools.com/css/default.asp)
+- [CSS References: W3Schools](https://www.w3schools.com/cssref/index.php)
 
 ## 🌐 Recursos Adicionais
 
