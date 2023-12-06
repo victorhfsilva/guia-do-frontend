@@ -114,6 +114,20 @@ O posicionamento de itens em um grid é crucial para criar layouts complexos e r
 }
 ```
 
+```css
+.item {
+  grid-column: 2;  /* Define que o item1 deve ocupar a coluna 2 no grid. */
+  grid-row: 1;     /* Define que o item1 deve ocupar a linha 1 no grid. */
+}
+```
+
+```css
+.item {
+  grid-column: 2;           /* Define que o item deve ocupar a coluna 2 no grid. */
+  grid-row: 1 / span 2;      /* Define que o item deve começar na linha 1 e se estender por 2 linhas no grid. */
+}
+```
+
 - `grid-column`: Define a faixa de colunas que o item deve ocupar no grid.
 - `grid-row`: Define a faixa de linhas que o item deve ocupar no grid.
 
