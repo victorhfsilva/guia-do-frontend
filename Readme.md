@@ -44,6 +44,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Acessibilidade](./HTML/Acessibilidade.md)
 - [ARIA](./HTML/ARIA.md)
 - [Internacionalização](./HTML/Internacionalização.md)
+- [HTML Injection](./HTML/HTML%20Injection.md)
 
 #### Extras:
 
@@ -56,10 +57,31 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Estrutura Básica](./CSS/Estrutura%20Básica.md)
 - [Reset CSS](./CSS/Reset%20CSS.md)
 - [Organização](./CSS/Organização.md)
-- [Modelo de Caixa](./CSS/Modelo%20de%20Caixa.md)
 - [Cores](./CSS/Cores.md)
 - [Fontes](./CSS/Fontes.md)
-- [Position] 
+- [Texto](./CSS/Texto.md)
+- [Background](./CSS/Background.md)
+- [Imagens](./CSS/Imagens.md)
+- [Unidades de Medida](./CSS/Unidades%20de%20Medida.md)
+- [Modelo de Caixa](./CSS/Modelo%20de%20Caixa.md)
+- [Bordas](./CSS/Bordas.md)
+- [Dimensionamento](./CSS/Dimensionamento.md)
+- [Display](./CSS/Display.md)
+- [Flexbox](./CSS/Flexbox.md)
+- [Grid Layout](./CSS/Grid%20Layout.md)
+- [Posição](./CSS/Posição.md)
+- [Media Query](./CSS/Media%20Query.md)
+- [Responsividade](./CSS/Responsividade.md)
+- [Pseudo Classes]
+- [Pseudo]
+- [Variáveis]
+- [Trasnformações 2D]
+- [Transformações 3D]
+- [Animações]
+- [Sombras]
+- [SAAS]
+- [Tailwind]
+- [CSS Injection]
 
 #### Extras:
 
