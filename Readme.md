@@ -72,22 +72,34 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Posição](./CSS/Posição.md)
 - [Media Query](./CSS/Media%20Query.md)
 - [Responsividade](./CSS/Responsividade.md)
-- [Pseudo Classes]
-- [Pseudo]
-- [Variáveis]
-- [Trasnformações 2D]
-- [Transformações 3D]
-- [Animações]
-- [Sombras]
-- [SAAS]
-- [Tailwind]
+- [Pseudo Classes](./CSS/Pseudo%20Classes.md)
+- [Variáveis](./CSS/Variáveis.md)
+- [Trasnformações 2D](./CSS/Transformações%202D.md)
+- [Transformações 3D](./CSS/Transformações%203D.md)
+- [Animações](./CSS/Animações.md)
+- [Sombras](./CSS/Sombras.md)
 - [CSS Injection]
+
 
 #### Extras:
 
 - [CSS: Mdn Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn/CSS)
 - [Learn CSS: W3Schools](https://www.w3schools.com/css/default.asp)
 - [CSS References: W3Schools](https://www.w3schools.com/cssref/index.php)
+
+### 4. SAAS
+
+- [Introdução](./SAAS/Introdução.md)
+- [Variáveis](./SAAS/Variáveis.md)
+- [Aninhamento](./SAAS/Aninhamento.md)
+- [Importações](./SAAS/Importações.md)
+- [Mixin](./SAAS/Mixin.md)
+- [Extend](./SAAS/Extend.md)
+
+#### Extras:
+
+- [SASS: W3Schools](https://www.w3schools.com/sass/default.php)
+
 
 ## 🌐 Recursos Adicionais
 
