@@ -78,7 +78,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Transformações 3D](./CSS/Transformações%203D.md)
 - [Animações](./CSS/Animações.md)
 - [Sombras](./CSS/Sombras.md)
-- [CSS Injection]
+- [CSS Injection](./CSS/CSS%20Injection.md)
 
 
 #### Extras:
@@ -100,6 +100,41 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 
 - [SASS: W3Schools](https://www.w3schools.com/sass/default.php)
 
+
+### 5. Javascript
+
+- [Variáveis](./Javascript/Variáveies%20e%20Operadores.md)
+- [Conversões para Boolean](./Javascript/Conversões%20para%20Boolean.md)
+- [Estruturas Condicionais](./Javascript/Estruturas%20Condicionais.md)
+- [Arrays](./Javascript/Array.md)
+- [Maps](./Javascript/Maps.md)
+- [Sets](./Javascript/Sets.md)
+- [Estruturas de Repetições](./Javascript/Estruturas%20de%20Repetição.md)
+- [Funções](./Javascript/Funções.md)
+- [Escopo](./Javascript/Escopo.md)
+- [Objetos](./Javascript/Objetos.md)
+- [Orientação ao Protótipo](./Javascript/Orientação%20ao%20Protótipo.md)
+- [Classes](./Javascript/Classes.md)
+- [Destructuring](./Javascript/Destructuring.md)
+- [Null e Undefined](./Javascript/Null%20e%20Undefined.md)
+- [Json](./Javascript/Json.md)
+- [Importação e Exportação](./Javascript/Importando%20e%20Exportando.md)
+- [Importações Dinâmicas](./Javascript/Importações%20Dinâmicas.md)
+- [Tratamento de Erros](./Javascript/Tratamento%20de%20Erros.md)
+- [Captura de Erros não Tratados](./Javascript/Captura%20de%20Erros%20Não%20Tratados.md)
+- [Promises](./Javascript/Promise.md)
+- [Funções Assíncronas](./Javascript/Funções%20Assíncronas.md)
+- [Fetch](./Javascript/Fetch.md)
+- [Axios](./Javascript/Axios.md)
+- [Jest](./Javascript/Jest.md)
+- [Modo Estrito](./Javascript/Modo%20Estrito.md)
+- [package.json](./Javascript/package.json.md)
+
+#### Extras:
+
+- [Javascript: Mdn Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+- [Learn Javascript: W3Schools](https://www.w3schools.com/js/default.asp)
+- [Javascript Reference: W3Schools](https://www.w3schools.com/jsref/default.asp)
 
 ## 🌐 Recursos Adicionais
 
