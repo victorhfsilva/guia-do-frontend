@@ -128,7 +128,9 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Axios](./Javascript/Axios.md)
 - [Jest](./Javascript/Jest.md)
 - [Modo Estrito](./Javascript/Modo%20Estrito.md)
-- [package.json](./Javascript/package.json.md)
+- [Browser Object Model](./Javascript/Browser%20Object%20Model.md)
+- [WebStorage](./Javascript/Webstorage.md)
+- [Cookies](./Javascript/Cookies.md)
 
 #### Extras:
 
@@ -136,9 +138,11 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Learn Javascript: W3Schools](https://www.w3schools.com/js/default.asp)
 - [Javascript Reference: W3Schools](https://www.w3schools.com/jsref/default.asp)
 
+### DOM: Document Object Model
+
+
+
 ## 🌐 Recursos Adicionais
-
-
 
 ## 🤝 Contribua!
 
