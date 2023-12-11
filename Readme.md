@@ -131,6 +131,9 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Browser Object Model](./Javascript/Browser%20Object%20Model.md)
 - [WebStorage](./Javascript/Webstorage.md)
 - [Cookies](./Javascript/Cookies.md)
+- [Métodos do DOM](./Javascript/Métodos%20do%20DOM.md)
+- [Formulários](./Javascript/Formulários.md)
+- [Eventos](./Javascript/Eventos.md)
 
 #### Extras:
 
