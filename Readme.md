@@ -141,9 +141,24 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Learn Javascript: W3Schools](https://www.w3schools.com/js/default.asp)
 - [Javascript Reference: W3Schools](https://www.w3schools.com/jsref/default.asp)
 
-### DOM: Document Object Model
+### Typescript
 
+- [Introdução](./Typescript/Introdução.md)
+- [Variáveis](./Typescript/Variáveis.md)
+- [Type Assertions](./Typescript/Type%20Assertion.md)
+- [Funções](./Typescript/Funções.md)
+- [Generics](./Typescript/Generics.md)
+- [Tipos de Funções](./Typescript/Tipos%20de%20Funções.md)
+- [Classes](./Typescript/Classes.md)
+- [Interfaces](./Typescript/Interfaces.md)
+- [Tipos Literais](./Typescript/Tipos%20Literais.md)
+- [Enums](./Typescript/Enums.md)
+- [Polimorfismo Estrutural](./Typescript/Polimorfismo%20Estrutural.md)
+- [Typescript Compiler](./Typescript/Typescript%20Compiler.md)
 
+#### Extras:
+
+- [Typescript: W3Schools](https://www.w3schools.com/typescript/index.php)
 
 ## 🌐 Recursos Adicionais
 
