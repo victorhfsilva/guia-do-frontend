@@ -51,6 +51,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [HTML: Mdn Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn/HTML)
 - [Learn HTML: W3Schools](https://www.w3schools.com/html/default.asp)
 - [HTML References: W3Schools](https://www.w3schools.com/tags/default.asp)
+- [HTML: Tutorials Point](https://www.tutorialspoint.com/html/index.htm)
 
 ### 3. CSS
 
@@ -86,6 +87,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [CSS: Mdn Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn/CSS)
 - [Learn CSS: W3Schools](https://www.w3schools.com/css/default.asp)
 - [CSS References: W3Schools](https://www.w3schools.com/cssref/index.php)
+- [CSS: Tutorials Point](https://www.tutorialspoint.com/css/index.htm)
 
 ### 4. SAAS
 
@@ -99,6 +101,8 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 #### Extras:
 
 - [SASS: W3Schools](https://www.w3schools.com/sass/default.php)
+- [SASS: Tutorials Point](https://www.tutorialspoint.com/sass/index.htm)
+
 
 ### 5. Javascript
 
@@ -139,6 +143,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Javascript: Mdn Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 - [Learn Javascript: W3Schools](https://www.w3schools.com/js/default.asp)
 - [Javascript Reference: W3Schools](https://www.w3schools.com/jsref/default.asp)
+- [Javascript: Tutorials Point](https://www.tutorialspoint.com/javascript/index.htm)
 
 ### Typescript
 
@@ -180,11 +185,13 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Themes e Tokens](./React/Themes%20e%20Tokes.md)
 
 #### Hooks
+
 - [useState](./React/useState.md)
 - [useEffect](./React/useEffect.md)
-
-- [useRef]
-
+- [useRef](./React/useRef.md)
+- [useReducer](./React/useReducer.md)
+- [useCallback](./React/useCallback.md)
+- [Hooks Personalizados](./React/Hooks%20Personalizados.md)
 - [React Hook Form](./React/React%20Hook%20Forms.md)
 
 #### Extras:
@@ -192,6 +199,9 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [React: W3Schools](https://www.w3schools.com/react/default.asp)
 
 ## 🌐 Recursos Adicionais
+
+- [Full Stack Open](https://fullstackopen.com/en/)
+- [React Typescript Cheatsheets](https://react-typescript-cheatsheet.netlify.app/)
 
 ## 🤝 Contribua!
 
