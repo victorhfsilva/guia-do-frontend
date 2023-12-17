@@ -100,7 +100,6 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 
 - [SASS: W3Schools](https://www.w3schools.com/sass/default.php)
 
-
 ### 5. Javascript
 
 - [Variáveis](./Javascript/Variáveies%20e%20Operadores.md)
@@ -159,6 +158,38 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 #### Extras:
 
 - [Typescript: W3Schools](https://www.w3schools.com/typescript/index.php)
+
+### React:
+
+- [Inicializando Projetos com o CRA](./React/CRA.md)
+- [Inicializando Projetos com o Vite](./React/Vite.md)
+- [Componentes](./React/Componentes.md)
+- [Renderização](./React/Renderização.md)
+- [JSX](./React/JSX.md)
+- [Renderização Condicional](./React/Renderização%20Condicional.md)
+- [Eventos](./React/Eventos.md)
+- [Formulários](./React/Formulários.md)
+- [Formulários Controlados vs Não Controlados](./React/Formulários%20Controlados%20vs%20Não%20Controlados.md)
+- [Formulários Controlados](./React/Formulários%20Controlados.md)
+- [Formulários Não Controlados](./React/Formulários%20Não%20Controlados.md)
+- [Contextos](./React/Contextos.md)
+- [React Router](./React/React%20Router.md)
+- [Rotas Protegidas](./React/Rotas%20Protegidas.md)
+- [Estilização](./React/Estilização.md)
+- [Styled Components](./React/Styled-Components.md)
+- [Themes e Tokens](./React/Themes%20e%20Tokes.md)
+
+#### Hooks
+- [useState](./React/useState.md)
+- [useEffect](./React/useEffect.md)
+
+- [useRef]
+
+- [React Hook Form](./React/React%20Hook%20Forms.md)
+
+#### Extras:
+
+- [React: W3Schools](https://www.w3schools.com/react/default.asp)
 
 ## 🌐 Recursos Adicionais
 

@@ -43,7 +43,7 @@ class MinhaClasse extends Component {
 
 ### Exemplo
 
-```js
+```jsx
 import React, { Component } from 'react';
 
 class ClasseComEstado extends Component {
@@ -69,7 +69,9 @@ class ClasseComEstado extends Component {
 }
 ```
 
-```typescript
+Ou, em tsx:
+
+```tsx
 import React, { Component } from 'react';
 
 interface Estado {
@@ -110,7 +112,7 @@ export default ClasseComEstado;
 
 ### Sintaxe
 
-```javascript
+```jsx
 import React from 'react';
 
 export default function MeuComponente() {
@@ -124,7 +126,7 @@ export default function MeuComponente() {
 
 ### Utilizando props como argumentos:
 
-```typescript
+```tsx
 interface IProps {
   name: String,
   color?: String
@@ -141,7 +143,7 @@ export default function MeuComponente(props: IProps) {
 
 ### Destructuring do props
 
-```typescript
+```tsx
 interface IProps {
   name: String,
   color?: String
@@ -177,11 +179,28 @@ export default const MeuComponent = ({name}: IProps) => {
 
 ### Exemplo
 
-```js
+```jsx
 import React, { useState } from 'react';
 
 function FuncaoComEstado() {
   const [contador, setContador] = useState(0);
+
+  return (
+    <div>
+      <p>Contador: {contador}</p>
+      <button onClick={() => setContador(contador + 1)}>Incrementar</button>
+    </div>
+  );
+}
+```
+
+Ou, em tsx:
+
+```tsx
+import React, { useState } from 'react';
+
+function FuncaoComEstado() {
+  const [contador, setContador] = useState<number>(0);
 
   return (
     <div>
