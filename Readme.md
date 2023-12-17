@@ -103,7 +103,6 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [SASS: W3Schools](https://www.w3schools.com/sass/default.php)
 - [SASS: Tutorials Point](https://www.tutorialspoint.com/sass/index.htm)
 
-
 ### 5. Javascript
 
 - [Variáveis](./Javascript/Variáveies%20e%20Operadores.md)
@@ -163,6 +162,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 #### Extras:
 
 - [Typescript: W3Schools](https://www.w3schools.com/typescript/index.php)
+- [Typescript: Tutorials Point](https://www.tutorialspoint.com/typescript/index.htm)
 
 ### React:
 
@@ -197,6 +197,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 #### Extras:
 
 - [React: W3Schools](https://www.w3schools.com/react/default.asp)
+- [ReactJS: Tutorials Point](https://www.tutorialspoint.com/reactjs/index.htm)
 
 ## 🌐 Recursos Adicionais
 
