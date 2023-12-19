@@ -19,7 +19,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Response Headers](./Fundamentos%20da%20Web/Respostas/Response-Headers.md)
 - [Status Code](./Fundamentos%20da%20Web/Respostas/Status-Code.md)
 
-#### Extras: 
+#### Referências: 
 - [Protocolo HTTP: Mdn Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP)
 
 ### 2. HTML
@@ -46,7 +46,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Internacionalização](./HTML/Internacionalização.md)
 - [HTML Injection](./HTML/HTML%20Injection.md)
 
-#### Extras:
+#### Referências:
 
 - [HTML: Mdn Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn/HTML)
 - [Learn HTML: W3Schools](https://www.w3schools.com/html/default.asp)
@@ -82,7 +82,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [CSS Injection](./CSS/CSS%20Injection.md)
 
 
-#### Extras:
+#### Referências:
 
 - [CSS: Mdn Web Docs](https://developer.mozilla.org/pt-BR/docs/Learn/CSS)
 - [Learn CSS: W3Schools](https://www.w3schools.com/css/default.asp)
@@ -98,7 +98,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Mixin](./SAAS/Mixin.md)
 - [Extend](./SAAS/Extend.md)
 
-#### Extras:
+#### Referências:
 
 - [SASS: W3Schools](https://www.w3schools.com/sass/default.php)
 - [SASS: Tutorials Point](https://www.tutorialspoint.com/sass/index.htm)
@@ -137,7 +137,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Formulários](./Javascript/Formulários.md)
 - [Eventos](./Javascript/Eventos.md)
 
-#### Extras:
+#### Referências:
 
 - [Javascript: Mdn Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 - [Learn Javascript: W3Schools](https://www.w3schools.com/js/default.asp)
@@ -159,7 +159,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Polimorfismo Estrutural](./Typescript/Polimorfismo%20Estrutural.md)
 - [Typescript Compiler](./Typescript/Typescript%20Compiler.md)
 
-#### Extras:
+#### Referências:
 
 - [Typescript: W3Schools](https://www.w3schools.com/typescript/index.php)
 - [Typescript: Tutorials Point](https://www.tutorialspoint.com/typescript/index.htm)
@@ -184,7 +184,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Styled Components](./React/Styled-Components.md)
 - [Themes e Tokens](./React/Themes%20e%20Tokes.md)
 
-#### Hooks
+#### Hooks:
 
 - [useState](./React/useState.md)
 - [useEffect](./React/useEffect.md)
@@ -194,7 +194,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Hooks Personalizados](./React/Hooks%20Personalizados.md)
 - [React Hook Form](./React/React%20Hook%20Forms.md)
 
-#### Extras:
+#### Referências:
 
 - [React: W3Schools](https://www.w3schools.com/react/default.asp)
 - [ReactJS: Tutorials Point](https://www.tutorialspoint.com/reactjs/index.htm)
