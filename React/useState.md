@@ -34,6 +34,24 @@ function Counter() {
   );
 }
 ```
+
+## Atualizando o estado com Funções de Flecha
+
+Para atualizar o estado, você pode utilizar a função de atualização fornecida pelo useState. Aqui, usaremos uma função de flecha para incrementar o contador.
+
+```tsx
+const MyComponent = () => {
+  const [contador, setContador] = useState<number>(0);
+
+  const incrementarContador = () => {
+    // Utilizando uma função de flecha para atualizar o estado
+    setContador((prevContador) => prevContador + 1);
+  };
+
+  // Restante da lógica do componente...
+};
+```
+
 ## Uso com Styled-Components
 
 ```javascript

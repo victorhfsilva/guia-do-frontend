@@ -193,6 +193,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [useCallback](./React/useCallback.md)
 - [Hooks Personalizados](./React/Hooks%20Personalizados.md)
 - [React Hook Form](./React/React%20Hook%20Forms.md)
+- [Zustand](./React/Zustand.md)
 
 #### Referências:
 
