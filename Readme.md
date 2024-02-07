@@ -128,7 +128,6 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Funções Assíncronas](./Javascript/Funções%20Assíncronas.md)
 - [Fetch](./Javascript/Fetch.md)
 - [Axios](./Javascript/Axios.md)
-- [Jest](./Javascript/Jest.md)
 - [Modo Estrito](./Javascript/Modo%20Estrito.md)
 - [Browser Object Model](./Javascript/Browser%20Object%20Model.md)
 - [WebStorage](./Javascript/Webstorage.md)
@@ -137,6 +136,13 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Formulários](./Javascript/Formulários.md)
 - [Eventos](./Javascript/Eventos.md)
 
+#### Jest
+
+- [Testes com Jest](./Jest/Testes.md)
+- [Matchers](./Jest/Matchers.md)
+- [Organização dos Testes](./Jest/Organização%20dos%20Testes.md)
+- [Mocks](./Jest/Mocks.md)
+
 #### Referências:
 
 - [Javascript: Mdn Web Docs](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
@@ -144,7 +150,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Javascript Reference: W3Schools](https://www.w3schools.com/jsref/default.asp)
 - [Javascript: Tutorials Point](https://www.tutorialspoint.com/javascript/index.htm)
 
-### Typescript
+### 6. Typescript
 
 - [Introdução](./Typescript/Introdução.md)
 - [Variáveis](./Typescript/Variáveis.md)
@@ -164,7 +170,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Typescript: W3Schools](https://www.w3schools.com/typescript/index.php)
 - [Typescript: Tutorials Point](https://www.tutorialspoint.com/typescript/index.htm)
 
-### React:
+### 7. React:
 
 - [Inicializando Projetos com o CRA](./React/CRA.md)
 - [Inicializando Projetos com o Vite](./React/Vite.md)
@@ -194,6 +200,12 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Hooks Personalizados](./React/Hooks%20Personalizados.md)
 - [React Hook Form](./React/React%20Hook%20Forms.md)
 - [Zustand](./React/Zustand.md)
+
+#### React Testing Library:
+
+- [Testes de Componentes](./React%20Testing%20Library/Testes%20de%20Componentes.md)
+- [Seletores e Consulta de Elementos](./React%20Testing%20Library/Seletores%20e%20Consulta%20de%20Elementos.md)
+- [Testes de Interações do Usuário](./React%20Testing%20Library/Testes%20de%20Interações%20do%20Usuário.md)
 
 #### Referências:
 
