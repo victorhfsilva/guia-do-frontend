@@ -52,18 +52,7 @@ export default {
 }
 ```
 
-## 5. Crie o arquivo fileMock.js
-
-Crie o arquivo fileMock.js na pasta root com o seguinte conteúdo:
-
-```js
-module.exports = {
-    __esModule: true,
-    default: 'test-file-stub',
-};
-```
-
-## 6. Edite o arquivo .eslintrc.cjs
+## 5. Edite o arquivo .eslintrc.cjs
 
 Adicione `"react-app", "react-app/jest"` no array extends da configuração.
 
@@ -89,6 +78,17 @@ module.exports = {
     ],
   },
 }
+```
+
+## 6. Crie o arquivo fileMock.js
+
+Crie o arquivo fileMock.js na pasta root com o seguinte conteúdo:
+
+```js
+module.exports = {
+    __esModule: true,
+    default: 'test-file-stub',
+};
 ```
 
 ## 7. Importe as dependências necessárias nos testes

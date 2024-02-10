@@ -47,6 +47,7 @@ export default MeuComponente;
 
    ```javascript
    import { render, screen, fireEvent } from '@testing-library/react';
+   import '@testing-library/jest-dom'
    import MeuComponente from './MeuComponente';
    ```
 

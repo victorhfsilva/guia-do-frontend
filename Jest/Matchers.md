@@ -102,6 +102,8 @@
 - **`toHaveStyle(estilo)`**: Verifica se o elemento tem o estilo especificado.
   ```javascript
   expect(elemento).toHaveStyle('color: red');
+
+  expect(elemento).toHaveStyle({backgroundColor : "red"});
   ```
 
 - **`toHaveClass(classe)`**: Verifica se o elemento tem a classe especificada.
