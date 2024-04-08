@@ -203,6 +203,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 
 #### React Testing Library:
 
+- [Configuração do Jest e React Testing Library com Vite](./React%20Testing%20Library/Configuração%20do%20Jest%20e%20React%20Testing%20Library%20com%20Vite.md)
 - [Testes de Componentes](./React%20Testing%20Library/Testes%20de%20Componentes.md)
 - [Seletores e Consulta de Elementos](./React%20Testing%20Library/Seletores%20e%20Consulta%20de%20Elementos.md)
 - [Testes de Interações do Usuário](./React%20Testing%20Library/Testes%20de%20Interações%20do%20Usuário.md)
