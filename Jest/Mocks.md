@@ -62,7 +62,7 @@ jest.spyOn(meuObjeto, 'metodo2').mockReturnValue('retorno do método 2');
 ```javascript
 // Mockando um módulo externo e sua implementação.
 jest.mock('meu-modulo-externo', () => ({
-  minhaFuncaoExterna: jest.fn(() => 'retorno do módulo externo')
+  minhaFuncaoExterna: jest.fn(() => 'retorno da funcao')
 }));
 ```
 
@@ -120,6 +120,17 @@ minhaFuncao.mockRestore(); // Restaura apenas o mock `minhaFuncao`
 const minhaFuncaoAssincrona = jest.fn().mockResolvedValue('valor resolvido');
 ```
 
+#### Exemplo:
+
+Para mockar um módulo com função assíncrona
+
+```javascript
+// Mockando um módulo externo e sua implementação.
+jest.mock('meu-modulo-externo', () => ({
+  minhaFuncaoAssincronaExterna: jest.fn().mockResolvedValue('valor resolvido');
+}));
+```
+
 #### 15. Testando Chamadas em Ordem
 
 ```javascript
@@ -130,7 +141,3 @@ minhaFuncao('arg1');
 expect(minhaFuncao).toHaveBeenNthCalledWith(1);
 expect(minhaFuncao).toHaveBeenNthCalledWith(2, 'arg1');
 ```
-
----
-
-Com este cheatsheet detalhado e repleto de exemplos, você deve ser capaz de criar mocks eficazes para testar seu código de forma completa e precisa usando o Jest. Lembre-se de adaptar essas técnicas conforme necessário para atender às necessidades específicas dos seus casos de teste.
