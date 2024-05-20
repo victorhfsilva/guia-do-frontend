@@ -22,226 +22,129 @@ npm install @types/react-hook-form
 
 ## Uso Básico
 
-### **Formulário**
+Aqui está um exemplo básico de como usar o React Hook Form para criar e gerenciar um formulário:
 
-   - Importe `useForm` do React Hook Form.
-   - Chame `useForm()` no componente do formulário para criar um objeto de formulário.
-
-   ```javascript
-   import { useForm } from 'react-hook-form';
-
-   function MyForm() {
-
-     const { register, handleSubmit } = useForm();
-
-     // Resto do código do formulário
-   }
-   ```
-
-## **Campos de Entrada**
-
-   - Utilize o atributo `ref` criado pelo `register` nos campos de entrada.
-
-   - O argumento fornecido para register é o identificador único para o campo de entrada. É através deste identificador que a biblioteca de gerenciamento de formulários rastreia e manipula o campo. Pode ser um nome específico ('fieldName' no exemplo), mas deve ser único dentro do formulário.
-
-   ```javascript
-   <input type='text' name='name' ref={register('fieldName')} />
-   ```
-
-## **Envio de Formulário**
-
-   - O atributo onSubmit é um evento associado ao formulário que é acionado quando o formulário é enviado. 
-
-   ```javascript
-   <form onSubmit={handleSubmit(onSubmit)}>
-     {/* Campos de entrada aqui */}
-     <button type="submit">Enviar</button>
-   </form>
-   ```
-
-## Validação
-
-O React Hook Form oferece suporte a várias regras de validação, como `required`, `minLength`, `maxLength`, `pattern` e personalização de validação. Aqui está um exemplo de uso:
-
-```javascript
-<input
-  ref={register('email', {
-    required: 'O email é obrigatório.',
-    pattern: {
-      value: /^[A-Za-z]+$/i,
-      message: 'Somente letras são permitidas no email.',
-    }
-  })}
-/>
-<p>{errors.email?.message}</p>
-```
-
-### Estados e Erros
-
-- Use o objeto `errors` para rastrear erros de validação.
-- Verifique `errors.fieldName` para exibir mensagens de erro associadas a um campo específico.
-
-### Trabalhando com Regras Personalizadas
-
-- Crie funções de validação personalizadas e aplique-as nas regras de validação.
-
-```javascript
-const isUniqueEmail = async (email) => {
-  const response = await checkEmailAvailability(email);
-  return response.available;
-};
-
-<input
-  ref={register('email', {
-    validate: {
-      isUnique: isUniqueEmail,
-    },
-  })}
-/>
-```
-
-## Formulários Controlados
-
-- Use `useForm` com `defaultValues` para criar definir valores padrão.
-- Utilize `setValue` para atualizar valores de campos controlados.
-
-```javascript
-const { register, handleSubmit, setValue } = useForm({
-  defaultValues: {
-    name: 'John',
-    email: 'john@example.com',
-  }
-});
-```
-
-## Aninhamento de Dados
-
-- Use notação de ponto para campos aninhados em objetos.
-
-```javascript
-<input ref={register('address.street')} />
-<input ref={register('address.city')} />
-```
-
-### Exemplo
-
-```js
+```jsx
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
 function App() {
-  // Inicialize o hook useForm
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const onSubmit = data => console.log(data);
 
-  // Função para lidar com o envio do formulário
-  const onSubmit = (data) => {
-    console.log(data); // Os dados do formulário serão exibidos no console
-  };
+  console.log(watch("example")); // assiste ao campo "example" e exibe seu valor em tempo real
 
   return (
-    <div className="App">
-      <h1>Formulário com React Hook Form</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {/* Campo de Nome */}
-        <div>
-          <label>Nome:</label>
-          <input
-            type="text"
-            name="name"
-            ref={register({ required: 'Nome é obrigatório' })}
-          />
-          {errors.name && <p>{errors.name.message}</p>}
-        </div>
-
-        {/* Campo de Email */}
-        <div>
-          <label>Email:</label>
-          <input
-            type="text"
-            name="email"
-            ref={register({
-              required: 'Email é obrigatório',
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: 'Email inválido',
-              },
-            })}
-          />
-          {errors.email && <p>{errors.email.message}</p>}
-        </div>
-
-        {/* Botão de Envio */}
-        <div>
-          <button type="submit">Enviar</button>
-        </div>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input {...register("example", { required: true })} placeholder="Example" />
+      {errors.example && <span>Este campo é obrigatório</span>}
+      
+      <input type="submit" />
+    </form>
   );
 }
 
 export default App;
 ```
 
-Ou, em tsx:
+### Explicação do Código
 
-```tsx
+1. **Importação e Inicialização**: `useForm` é importado do React Hook Form. Este hook retorna vários métodos e propriedades úteis, como `register`, `handleSubmit`, `watch`, e `formState`.
+
+2. **Registro de Campos**: `register` é utilizado para registrar os campos do formulário. No exemplo, o campo "example" é registrado com uma validação de obrigatoriedade.
+
+3. **Submissão do Formulário**: `handleSubmit` é uma função que lida com a submissão do formulário. Ela recebe uma função (neste caso, `onSubmit`) que é chamada com os dados do formulário quando ele é enviado.
+
+4. **Validação e Erros**: `formState: { errors }` fornece informações sobre os erros de validação. No exemplo, se o campo "example" estiver vazio, uma mensagem de erro será exibida.
+
+## Validações Avançadas
+
+Você pode adicionar validações mais complexas e personalizadas usando o React Hook Form. Aqui está um exemplo com validação de comprimento mínimo e padrão de email:
+
+```jsx
 import React from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-
-interface FormData {
-  name: string;
-  email: string;
-}
+import { useForm } from 'react-hook-form';
 
 function App() {
-  // Inicialize o hook useForm
-  const { register, handleSubmit, errors } = useForm<FormData>();
-
-  // Função para lidar com o envio do formulário
-  const onSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(data); // Os dados do formulário serão exibidos no console
-  };
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const onSubmit = data => console.log(data);
 
   return (
-    <div className="App">
-      <h1>Formulário com React Hook Form</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {/* Campo de Nome */}
-        <div>
-          <label>Nome:</label>
-          <input
-            type="text"
-            name="name"
-            ref={register({ required: 'Nome é obrigatório' })}
-          />
-          {errors.name && <p>{errors.name.message}</p>}
-        </div>
-
-        {/* Campo de Email */}
-        <div>
-          <label>Email:</label>
-          <input
-            type="text"
-            name="email"
-            ref={register({
-              required: 'Email é obrigatório',
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: 'Email inválido',
-              },
-            })}
-          />
-          {errors.email && <p>{errors.email.message}</p>}
-        </div>
-
-        {/* Botão de Envio */}
-        <div>
-          <button type="submit">Enviar</button>
-        </div>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input {...register("email", { 
+        required: "Email é obrigatório", 
+        pattern: {
+          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+          message: "Endereço de email inválido"
+        } 
+      })} placeholder="Email" />
+      {errors.email && <span>{errors.email.message}</span>}
+      
+      <input {...register("password", { 
+        required: "Senha é obrigatória", 
+        minLength: {
+          value: 6,
+          message: "A senha deve ter pelo menos 6 caracteres"
+        }
+      })} placeholder="Senha" type="password" />
+      {errors.password && <span>{errors.password.message}</span>}
+      
+      <input type="submit" />
+    </form>
   );
 }
 
 export default App;
 ```
+
+## Integração com Componentes de UI
+
+O React Hook Form pode ser facilmente integrado com bibliotecas de componentes de UI, como Material-UI. Aqui está um exemplo usando Material-UI:
+
+```jsx
+function App() {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = data => console.log(data);
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <TextField
+        {...register("email", { 
+          required: "Email é obrigatório", 
+          pattern: {
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+            message: "Endereço de email inválido"
+          }
+        })}
+        label="Email"
+        error={!!errors.email}
+        helperText={errors.email ? errors.email.message : ''}
+      />
+      
+      <TextField
+        {...register("password", { 
+          required: "Senha é obrigatória", 
+          minLength: {
+            value: 6,
+            message: "A senha deve ter pelo menos 6 caracteres"
+          }
+        })}
+        label="Senha"
+        type="password"
+        error={!!errors.password}
+        helperText={errors.password ? errors.password.message : ''}
+      />
+      
+      <Button type="submit" variant="contained" color="primary">Enviar</Button>
+    </form>
+  );
+}
+
+export default App;
+```
+
+### Conclusão
+
+O React Hook Form é uma ferramenta poderosa para o gerenciamento de formulários em aplicações React. Ele facilita a manipulação de dados, validação e integração com componentes de UI.
+
+Para mais informações e exemplos avançados, consulte a [documentação oficial do React Hook Form](https://react-hook-form.com).
