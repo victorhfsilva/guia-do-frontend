@@ -1,143 +1,254 @@
-# Mocks no Jest
+## Mocks no React
 
-#### 1. Criando Mocks Simples
+Mocks são úteis em testes para isolar a lógica da aplicação das dependências externas. 
 
-```javascript
-// Criando um mock simples substituindo uma função com uma implementação simulada.
-const minhaFuncao = jest.fn();
-```
+### Mockando Serviços
 
-#### 2. Criando Mocks com Implementação Personalizada
+#### Usando `jest.mock()`
 
-```javascript
-// Criando um mock com uma implementação personalizada.
-const minhaFuncao = jest.fn(() => 'retorno personalizado');
-```
-
-#### 3. Mockando Módulos Inteiros
+Para mockar serviços que fazem chamadas HTTP, você pode usar `jest.mock()`.
 
 ```javascript
-// Criando um mock para um módulo inteiro.
-jest.mock('./meuModulo');
-```
-
-#### 4. Restaurando Mocks
-
-```javascript
-// Restaurando um mock para sua implementação original.
-jest.restoreAllMocks();
-```
-
-#### 5. Mockando Funções com Implementações Diferentes
-
-```javascript
-// Mockando uma função com diferentes implementações em chamadas sequenciais.
-const minhaFuncao = jest.fn()
-  .mockImplementationOnce(() => 'primeira chamada')
-  .mockImplementationOnce(() => 'segunda chamada');
-```
-
-#### 6. Mockando Métodos de Objeto
-
-```javascript
-// Mockando um método de um objeto.
-const meuObjeto = { metodo: () => {} };
-const spy = jest.spyOn(meuObjeto, 'metodo');
-```
-
-#### 7. Encadeando Mocks
-
-```javascript
-// Encadeando mocks para métodos de um objeto.
-const meuObjeto = {
-  metodo1: () => {},
-  metodo2: () => {}
+// service.js
+export const fetchData = async () => {
+  const response = await fetch('/api/data');
+  return response.json();
 };
-jest.spyOn(meuObjeto, 'metodo1').mockReturnValue('retorno do método 1');
-jest.spyOn(meuObjeto, 'metodo2').mockReturnValue('retorno do método 2');
-```
 
-#### 8. Mockando Módulos Externos
+// service.test.js
+import { fetchData } from './service';
 
-```javascript
-// Mockando um módulo externo e sua implementação.
-jest.mock('meu-modulo-externo', () => ({
-  minhaFuncaoExterna: jest.fn(() => 'retorno da funcao')
-}));
-```
+jest.mock('./service');
 
-#### 9. Mockando Construtores de Classes
+test('fetchData returns mocked data', async () => {
+  fetchData.mockResolvedValue({ data: 'mocked data' });
 
-```javascript
-// Mockando o construtor de uma classe.
-jest.mock('./MinhaClasse', () => {
-  return jest.fn().mockImplementation(() => {
-    return {
-      metodo: () => 'retorno do método'
-    };
-  });
+  const result = await fetchData();
+  expect(result.data).toBe('mocked data');
 });
 ```
 
-#### 10. Observando Chamadas
+### Mockando Hooks
+
+#### Usando `jest.mock()` para hooks personalizados
 
 ```javascript
-// Observando chamadas de uma função ou método.
-const minhaFuncao = jest.fn();
-minhaFuncao();
-expect(minhaFuncao).toHaveBeenCalled();
+// useCustomHook.js
+import { useState, useEffect } from 'react';
+
+export const useCustomHook = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/data')
+      .then((response) => response.json())
+      .then(setData);
+  }, []);
+
+  return data;
+};
+
+// component.test.js
+import { renderHook } from '@testing-library/react-hooks';
+import { useCustomHook } from './useCustomHook';
+
+jest.mock('./useCustomHook');
+
+test('useCustomHook returns mocked data', () => {
+  useCustomHook.mockReturnValue('mocked data');
+
+  const { result } = renderHook(() => useCustomHook());
+  expect(result.current).toBe('mocked data');
+});
 ```
 
-#### 11. Testando Parâmetros de Entrada
+### Mockando Funções
+
+#### Usando `jest.fn()`
 
 ```javascript
-// Testando parâmetros passados para uma função.
-const minhaFuncao = jest.fn();
-minhaFuncao('arg1', 'arg2');
-expect(minhaFuncao).toHaveBeenCalledWith('arg1', 'arg2');
+// utils.js
+export const add = (a, b) => a + b;
+
+// utils.test.js
+import { add } from './utils';
+
+test('add function', () => {
+  const mockAdd = jest.fn(add);
+
+  expect(mockAdd(1, 2)).toBe(3);
+  expect(mockAdd).toHaveBeenCalledWith(1, 2);
+});
 ```
 
-#### 12. Mockando Múltiplas Funções com Implementações Diferentes
+### Mockando Módulos
+
+#### Usando `jest.mock()`
 
 ```javascript
-// Mockando múltiplas funções com diferentes implementações.
-const minhaFuncao1 = jest.fn(() => 'retorno da função 1');
-const minhaFuncao2 = jest.fn(() => 'retorno da função 2');
+// math.js
+export const multiply = (a, b) => a * b;
+
+// component.test.js
+import { multiply } from './math';
+
+jest.mock('./math');
+
+test('multiply function', () => {
+  multiply.mockReturnValue(10);
+
+  expect(multiply(2, 5)).toBe(10);
+});
 ```
 
-#### 13. Restaurando Mocks Individuais
+### Mockando Funções Assíncronas
+
+#### Usando `jest.mock()` com `mockResolvedValue`
 
 ```javascript
-// Restaurando um mock específico para sua implementação original.
-jest.resetAllMocks(); // Restaura todos os mocks
-minhaFuncao.mockRestore(); // Restaura apenas o mock `minhaFuncao`
+// asyncFunction.js
+export const fetchData = async () => {
+  const response = await fetch('/api/data');
+  return response.json();
+};
+
+// asyncFunction.test.js
+import { fetchData } from './asyncFunction';
+
+jest.mock('./asyncFunction');
+
+test('fetchData returns mocked data', async () => {
+  fetchData.mockResolvedValue({ data: 'mocked data' });
+
+  const result = await fetchData();
+  expect(result.data).toBe('mocked data');
+});
 ```
 
-#### 14. Mockando Funções Assíncronas
+### Mockando Módulos com Funções Assíncronas
 
 ```javascript
-// Mockando uma função assíncrona com uma implementação personalizada.
-const minhaFuncaoAssincrona = jest.fn().mockResolvedValue('valor resolvido');
+// asyncModule.js
+export const getData = async () => {
+  const response = await fetch('/api/data');
+  return response.json();
+};
+
+// asyncModule.test.js
+import { getData } from './asyncModule';
+
+jest.mock('./asyncModule');
+
+test('getData returns mocked data', async () => {
+  getData.mockResolvedValue({ data: 'mocked data' });
+
+  const result = await getData();
+  expect(result.data).toBe('mocked data');
+});
 ```
 
-#### Exemplo:
+###  Mockando Métodos de Objetos
 
-Para mockar um módulo com função assíncrona
+#### Usando `jest.spyOn()`
 
 ```javascript
-// Mockando um módulo externo e sua implementação.
-jest.mock('meu-modulo-externo', () => ({
-  minhaFuncaoAssincronaExterna: jest.fn().mockResolvedValue('valor resolvido');
-}));
+// objectMethods.js
+export const obj = {
+  method: () => 'real implementation',
+};
+
+// objectMethods.test.js
+import { obj } from './objectMethods';
+
+test('method is called', () => {
+  const spy = jest.spyOn(obj, 'method').mockReturnValue('mocked implementation');
+
+  expect(obj.method()).toBe('mocked implementation');
+  expect(spy).toHaveBeenCalled();
+});
 ```
 
-#### 15. Testando Chamadas em Ordem
+### Mocks em Typescript
 
-```javascript
-// Testando chamadas em uma ordem específica.
-const minhaFuncao = jest.fn();
-minhaFuncao();
-minhaFuncao('arg1');
-expect(minhaFuncao).toHaveBeenNthCalledWith(1);
-expect(minhaFuncao).toHaveBeenNthCalledWith(2, 'arg1');
+O `as jest.Mock` é utilizado para garantir que o TypeScript reconheça a função mockada corretamente, especialmente quando você está lidando com funções que possuem tipos complexos.
+
+#### Service
+
+```typescript
+// service.ts
+export const fetchData = async (): Promise<{ data: string }> => {
+  const response = await fetch('/api/data');
+  return response.json();
+};
+
+// service.test.ts
+import { fetchData } from './service';
+
+jest.mock('./service');
+const mockFetchData = fetchData as jest.Mock;
+
+test('fetchData returns mocked data', async () => {
+  mockFetchData.mockResolvedValue({ data: 'mocked data' });
+
+  const result = await fetchData();
+  expect(result.data).toBe('mocked data');
+});
+```
+
+#### Hook
+
+```typescript
+// useCustomHook.js
+import { useState, useEffect } from 'react';
+
+export const useCustomHook = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/data')
+      .then((response) => response.json())
+      .then(setData);
+  }, []);
+
+  return data;
+};
+
+// component.test.js
+import { renderHook } from '@testing-library/react-hooks';
+import { useCustomHook } from './useCustomHook';
+
+jest.mock('./useCustomHook');
+const mockUseCustomHook = useCustomHook as jest.Mock;
+
+test('useCustomHook returns mocked data', () => {
+  mockUseCustomHook.mockReturnValue('mocked data');
+
+  const { result } = renderHook(() => mockUseCustomHook());
+  expect(result.current).toBe('mocked data');
+});
+```
+
+### Usando `mockClear()`
+
+O método `mockClear()` é utilizado para limpar todas as chamadas e instâncias que foram feitas ao mock. Isso é especialmente útil em casos onde você quer garantir que o mock não tenha estado residual de testes anteriores.
+
+```typescript
+test('fetchData is called once', async () => {
+  mockFetchData.mockResolvedValue({ data: 'mocked data' });
+
+  await fetchData();
+  expect(mockFetchData).toHaveBeenCalledTimes(1);
+
+  mockFetchData.mockClear();
+
+  await fetchData();
+  expect(mockFetchData).toHaveBeenCalledTimes(1);
+});
+```
+Também pode ser útil limpar os estados dentro de um método before each.
+
+```typescript
+beforeEach(() => {
+    mockFetchData.mockClear();
+});
 ```
