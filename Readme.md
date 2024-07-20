@@ -189,6 +189,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Estilização](./React/Estilização.md)
 - [Styled Components](./React/Styled-Components.md)
 - [Themes e Tokens](./React/Themes%20e%20Tokes.md)
+- [Memoização](./React/Memo.md)
 
 #### Hooks:
 
