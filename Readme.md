@@ -200,6 +200,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Hooks Personalizados](./React/Hooks%20Personalizados.md)
 - [React Hook Form](./React/React%20Hook%20Forms.md)
 - [Zustand](./React/Zustand.md)
+- [Recoil](./React/Recoil.md)
 - [React Query](./React/React%20Query.md)
 
 #### React Testing Library:

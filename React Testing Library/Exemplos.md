@@ -239,3 +239,77 @@ describe('Comportamento Rodapé', () => {
 
 })
 ```
+
+## Exemplo 3: Hook Contador
+
+Dado Atom do Recoil:
+
+```typescript
+import { atom } from 'recoil';
+
+export const counterState = atom<number>({
+    key: 'counterState',
+    default: 0
+})
+```
+
+E um hook que incrementa e decrementa o estado deste atom:
+
+```typescript
+const useCounter = () => {
+    const [count, setCount] = useRecoilState(counterState);
+
+    const increment = () => {
+        setCount(count + 1);
+    }
+
+    const decrement = () => {
+        setCount(count - 1);
+    }
+
+    return {
+        count,
+        increment,
+        decrement
+    }
+}
+
+export default useCounter;
+```
+
+Podemos testá-lo com:
+
+```typescript
+import { RecoilRoot } from "recoil";
+import useCounter from "./useCounter"
+import { renderHook } from "@testing-library/react";
+import { act } from "react";
+
+describe('counterHook test', () => {
+
+    test('given a counter, when I increment the state, the count must be incremented', () => {
+        const { result } = renderHook(() => useCounter(), {
+            wrapper: RecoilRoot
+        });
+
+        expect(result.current.count).toBe(0);
+        act(() => {
+            result.current.increment();
+        });
+        expect(result.current.count).toBe(1);
+    })
+
+    test('given a counter, when I decrement the state, the count must be decremented', () => {
+        const { result } = renderHook(() => useCounter(), {
+            wrapper: RecoilRoot
+        });
+
+        expect(result.current.count).toBe(0);
+        act(() => {
+            result.current.decrement();
+        });
+        expect(result.current.count).toBe(-1);
+    })
+
+})
+```
