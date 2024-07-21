@@ -190,6 +190,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Styled Components](./React/Styled-Components.md)
 - [Themes e Tokens](./React/Themes%20e%20Tokes.md)
 - [Memoização](./React/Memo.md)
+- [Lazy Loading](./React/Lazy%20Loading.md)
 
 #### Hooks:
 
@@ -205,7 +206,6 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [React Query](./React/React%20Query.md)
 
 #### React Testing Library:
-
 
 - [Configuração do Jest e React Testing Library com Vite](./React%20Testing%20Library/Configuração%20do%20Jest%20e%20React%20Testing%20Library%20com%20Vite.md)
 - [Configuração com o Vite](./React%20Testing%20Library/Configuração%20com%20Vite.md)
