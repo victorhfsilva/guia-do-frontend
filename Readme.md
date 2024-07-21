@@ -201,6 +201,8 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [useCallback](./React/useCallback.md)
 - [Hooks Personalizados](./React/Hooks%20Personalizados.md)
 - [React Hook Form](./React/React%20Hook%20Forms.md)
+- [Formik](./React/Formik.md)
+- [Yup](./React/Yup.md)
 - [Zustand](./React/Zustand.md)
 - [Recoil](./React/Recoil.md)
 - [React Query](./React/React%20Query.md)

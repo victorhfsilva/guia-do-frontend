@@ -157,6 +157,43 @@ export default const MeuComponent = ({name}: IProps) => {
   )
 }
 ```
+### Passando todos o props para um Componente Filho com `...props`
+
+Se você quiser passar todos os props recebidos por um componente pai diretamente para um componente filho, você pode fazer isso de forma mais direta:
+
+```javascript
+import React from 'react';
+
+// Define o componente funcional que receberá os props
+const MyComponent = ({ text, number, onClick }) => {
+  return (
+    <div>
+      <p>{text}</p>
+      <p>{number}</p>
+      <button onClick={onClick}>Click me</button>
+    </div>
+  );
+};
+
+// Define o componente pai que passará todos os props para MyComponent usando o operador de espalhamento
+const ParentComponent = (props) => {
+  return <MyComponent {...props} />;
+};
+
+// Uso do componente pai com todos os props
+const App = () => {
+  return (
+    <ParentComponent
+      text="Hello, world!"
+      number={42}
+      onClick={() => alert('Button clicked!')}
+    />
+  );
+};
+
+export default App;
+```
+
 
 ### Estado (State)
 
