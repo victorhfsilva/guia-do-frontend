@@ -143,6 +143,44 @@ const customMessagesSchema = Yup.object().shape({
 });
 ```
 
+### Utilizando a referência de outro campo
+
+Você pode utilizar a referência de outro campo nas suas validações.
+
+```typescript
+const validationSchema = yup.object().shape({
+    password: yup
+        .string().required('Password is required.')
+        .min(8, 'Password should be of minimum 8 characters length')
+        .matches(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/,
+            'Must contain at least one lowercase letter, one uppercase letter, one number, and one special character'
+        ),
+    confirmPassword: yup
+        .string().required('Password confirmation is necessary.')
+        .oneOf([yup.ref('password')], 'Passwords don\'t match.')
+})
+```
+
+### Transformando dados
+
+É possível transformar os dados inseridos pelo usuário utilizando a função `transform()`.
+
+```typescript
+const formatarTelefone = (valor) => {
+    if (!value) return
+
+    const telefone - valor.replace(/\D/g, "");
+
+    return `(${telefone.slice(0,2)}) ${telefone.slice(2,7)}-${telefone.slice(7)}`
+}
+
+const validationSchema = yup.object().shape({
+    telefone: yup
+        .required('Campo obrigatório').matches(/^\d{11}$/, 'Número Inválido').transform(formatarTelefone)
+)}
+```
+
 ### Usando Yup com Formik
 
 Formik integra-se bem com Yup para fornecer validação de formulários. Aqui está um exemplo básico de como usar Yup com Formik.
