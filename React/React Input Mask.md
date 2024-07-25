@@ -1,175 +1,169 @@
-# React Input Mask 
+# React Input Mask
 
-`react-input-mask` é uma biblioteca popular para mascarar entradas de usuário em formulários React. Ela permite formatar entradas de texto, como números de telefone, CPF, datas e muito mais, de forma que os usuários insiram dados em um formato específico.
+## Instalação
 
-### Instalação
-
-Para começar a usar `react-input-mask`, você precisa instalá-la no seu projeto React. Você pode fazer isso usando npm ou yarn:
+### Usando npm
+Para instalar o `react-input-mask` via npm, utilize o seguinte comando:
 
 ```bash
-npm install react-input-mask
-```
-ou
-```bash
-yarn add react-input-mask
+npm install react-input-mask 
+npm install @types/react-input-mask
 ```
 
-### Uso Básico
+### Sem um Bundler de Módulo
+Você também pode usar o `react-input-mask` diretamente em um projeto sem um bundler de módulo. Basta carregar os scripts do React, React-DOM e React Input Mask:
 
-Aqui está um exemplo básico de como usar `react-input-mask` para criar uma máscara de entrada de telefone:
-
-```jsx
-import React from 'react';
-import InputMask from 'react-input-mask';
-
-const PhoneInput = () => {
-  return (
-    <InputMask mask="(99) 99999-9999" placeholder="(XX) XXXXX-XXXX">
-      {(inputProps) => <input {...inputProps} type="text" />}
-    </InputMask>
-  );
-};
-
-export default PhoneInput;
+```html
+<!-- Carregar React primeiro -->
+<script src="https://unpkg.com/react/dist/react.min.js"></script>
+<script src="https://unpkg.com/react-dom/dist/react-dom.min.js"></script>
+<!-- Será exportado para window.ReactInputMask -->
+<script src="https://unpkg.com/react-input-mask/dist/react-input-mask.min.js"></script>
 ```
 
-### Máscaras Comuns
+## Propriedades
 
-1. **CPF**: `mask="999.999.999-99"`
-2. **Data**: `mask="99/99/9999"`
-3. **CEP**: `mask="99999-999"`
-4. **Cartão de Crédito**: `mask="9999 9999 9999 9999"`
+### mask : string
+Define a máscara para o input. Os caracteres padrão são:
+- `9`: 0-9
+- `a`: A-Z, a-z
+- `*`: A-Z, a-z, 0-9
 
-### Props e Métodos
+Qualquer caractere pode ser escapado com uma barra invertida (`\`). Ele aparecerá como uma dupla barra invertida em strings JS. Por exemplo, uma máscara de telefone alemão com prefixo fixo +49 ficaria assim: `mask="+4\9 99 999 99"` ou `mask={'+4\\9 99 999 99'}`.
 
-`react-input-mask` vem com várias propriedades e métodos úteis:
+### maskChar : string
+Caractere para cobrir partes não preenchidas da máscara. O caractere padrão é "_". Se configurado como `null` ou string vazia, as partes não preenchidas ficarão vazias como em um input comum.
 
-- **mask**: Define a máscara de entrada.
-- **maskChar**: Define o caractere usado para substituir entradas não digitadas. O padrão é `_`.
-- **alwaysShowMask**: Se verdadeiro, a máscara é sempre mostrada, mesmo quando o campo está vazio.
-- **beforeMaskedValueChange**: Função chamada antes de o valor mascarado ser alterado. Pode ser usada para validar ou modificar a entrada.
-- **formatChars** : Define as chaves correspondentes a cada Regex. As chaves padrão são:
+### formatChars : object
+Define caracteres de formatação com chaves como caracteres e valores correspondentes em expressões regulares. Os padrões são:
 
-```typescript
-formatChars: {
+```javascript
+{
   '9': '[0-9]',
   'a': '[A-Za-z]',
   '*': '[A-Za-z0-9]'
 }
 ```
-### beforeMaskedValueChange
 
-Aqui está um exemplo mais avançado que utiliza várias propriedades e métodos:
+### alwaysShowMask : boolean
+Mostra a máscara quando o input está vazio e não tem foco.
 
-```jsx
-import React, { useState } from 'react';
+### inputRef : function
+Use `inputRef` ao invés de `ref` se você precisar gerenciar o nó do input para focar, selecionar, etc.
+
+## Propriedades Experimentais
+
+### beforeMaskedValueChange : function
+Para comportamentos de máscara mais complexos, você pode fornecer uma função `beforeMaskedValueChange` para alterar o valor mascarado e a posição do cursor antes de serem aplicados ao input. A função recebe os seguintes argumentos:
+
+- `newState` (objeto): Novo estado do input, contendo `value` e `selection`. Exemplo: `{ value: '12/1_/____', selection: { start: 4, end: 4 } }`
+- `oldState` (objeto): Estado do input antes da mudança, contendo `value` e `selection`.
+- `userInput` (string): String digitada ou colada pelo usuário. `null` se não houver entrada.
+- `maskOptions` (objeto): Opções da máscara. Exemplo:
+```javascript
+{
+  mask: '99/99/9999',
+  maskChar: '_',
+  alwaysShowMask: false,
+  formatChars: {
+    '9': '[0-9]',
+    'a': '[A-Za-z]',
+    '*': '[A-Za-z0-9]'
+  },
+  permanents: [2, 5] // índices dos caracteres não editáveis na máscara
+}
+```
+
+`beforeMaskedValueChange` deve retornar um objeto com os campos:
+- `value` (string): Novo valor.
+- `selection` (objeto): Nova seleção.
+
+### children : function
+Para usar outro componente em vez de um `<input />` regular, passe uma função `render` como `children`. A função recebe um argumento `props` contendo as propriedades que não são usadas internamente pelo `react-input-mask`.
+
+## Exemplos
+
+### Exemplo Básico
+
+```javascript
+import React from 'react';
 import InputMask from 'react-input-mask';
 
-const CreditCardInput = () => {
-  const [cardNumber, setCardNumber] = useState('');
+class PhoneInput extends React.Component {
+  render() {
+    return <InputMask {...this.props} mask="+4\9 99 999 99" maskChar=" " />;
+  }
+}
+```
 
-  const handleBeforeMaskedValueChange = (newState, oldState, userInput) => {
-    let { value } = newState;
-    if (value.startsWith('34') || value.startsWith('37')) {
-      newState.mask = '9999 999999 99999';
-    } else {
-      newState.mask = '9999 9999 9999 9999';
+### Usando `beforeMaskedValueChange`
+
+```javascript
+import React from 'react';
+import InputMask from 'react-input-mask';
+
+class Input extends React.Component {
+  state = {
+    value: ''
+  }
+
+  onChange = (event) => {
+    this.setState({
+      value: event.target.value
+    });
+  }
+
+  beforeMaskedValueChange = (newState, oldState, userInput) => {
+    var { value } = newState;
+    var selection = newState.selection;
+    var cursorPosition = selection ? selection.start : null;
+
+    if (value.endsWith('-') && userInput !== '-' && !this.state.value.endsWith('-')) {
+      if (cursorPosition === value.length) {
+        cursorPosition--;
+        selection = { start: cursorPosition, end: cursorPosition };
+      }
+      value = value.slice(0, -1);
     }
-    return newState;
-  };
 
-  return (
-    <InputMask
-      mask="9999 9999 9999 9999"
-      value={cardNumber}
-      onChange={(e) => setCardNumber(e.target.value)}
-      beforeMaskedValueChange={handleBeforeMaskedValueChange}
-    >
-      {(inputProps) => <input {...inputProps} type="text" placeholder="XXXX XXXX XXXX XXXX" />}
-    </InputMask>
-  );
-};
+    return {
+      value,
+      selection
+    };
+  }
 
-export default CreditCardInput;
+  render() {
+    return (
+      <InputMask
+        mask="99999-9999"
+        maskChar={null}
+        value={this.state.value}
+        onChange={this.onChange}
+        beforeMaskedValueChange={this.beforeMaskedValueChange}
+      />
+    );
+  }
+}
 ```
 
-### Configuração Básica de um Formulário
+### Integrando com Material-UI
 
-Vamos configurar um formulário básico usando `react-hook-form`.
-
-**Criar o arquivo `Form.tsx`:**
-
-```tsx
+```javascript
 import React from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-
-type FormValues = {
-  phoneNumber: string;
-};
-
-const Form: React.FC = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
-
-  const onSubmit: SubmitHandler<FormValues> = data => {
-    console.log(data);
-  };
-
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label htmlFor="phoneNumber">Phone Number</label>
-        <input id="phoneNumber" {...register('phoneNumber', { required: 'Phone number is required' })} />
-        {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
-      </div>
-      <button type="submit">Submit</button>
-    </form>
-  );
-};
-
-export default Form;
-```
-
-#### Adicionando a Máscara de Entrada
-
-Agora, vamos adicionar a máscara de entrada ao campo de número de telefone usando `react-input-mask`.
-
-**Atualizar o componente `Form.tsx` para incluir a máscara de entrada:**
-
-```tsx
-import React from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
 import InputMask from 'react-input-mask';
+import MaterialInput from '@material-ui/core/Input';
 
-type FormValues = {
-  phoneNumber: string;
-};
+// Exemplo funcional
+const Input = (props) => (
+  <InputMask mask="99/99/9999" value={props.value} onChange={props.onChange}>
+    {(inputProps) => <MaterialInput {...inputProps} type="tel" disableUnderline />}
+  </InputMask>
+);
 
-const Form: React.FC = () => {
-  const { register, handleSubmit, setValue, formState: { errors } } = useForm<FormValues>();
-
-  const onSubmit: SubmitHandler<FormValues> = data => {
-    console.log(data);
-  };
-
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label htmlFor="phoneNumber">Phone Number</label>
-        <InputMask
-          mask="(99) 99999-9999"
-          maskChar=" "
-          onChange={(e) => setValue('phoneNumber', e.target.value)}
-        >
-          {(inputProps) => <input {...register('phoneNumber', { required: 'Phone number is required' })} {...inputProps} />}
-        </InputMask>
-        {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
-      </div>
-      <button type="submit">Submit</button>
-    </form>
-  );
-};
-
-export default Form;
+// Exemplo inválido
+const InvalidInput = (props) => (
+  <InputMask mask="99/99/9999" value={props.value}>
+    {(inputProps) => <MaterialInput {...inputProps} type="tel" disableUnderline onChange={props.onChange} />}
+  </InputMask>
+);
 ```
-
-Neste exemplo, utilizamos o componente `InputMask` da biblioteca `react-input-mask` para aplicar a máscara de número de telefone. A máscara `(99) 99999-9999` formata o campo como um número de telefone brasileiro.
