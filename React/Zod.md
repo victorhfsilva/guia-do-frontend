@@ -94,7 +94,7 @@ const UserForm: React.FC = () => {
 export default UserForm;
 ```
 
-### Explicação dos Componentes
+#### Explicação dos Componentes
 
 1. **Definindo o Schema com Zod**:
    - `z.object({...})` define um objeto com propriedades especificadas.
@@ -107,3 +107,84 @@ export default UserForm;
    - `register` é usado para conectar campos de formulário à lógica do React Hook Form.
    - `handleSubmit` gerencia o envio do formulário e chama `onSubmit` se a validação passar.
    - `formState: { errors }` é usado para acessar erros de validação e exibi-los.
+
+### Utilizando o Método `transform`
+
+O método `transform` do Zod permite transformar valores durante a validação. Isso é útil quando você precisa formatar ou ajustar os dados de entrada antes de utilizá-los no seu aplicativo. Vamos explorar como usar `transform` com Zod em um contexto de um formulário em React.
+
+#### Exemplo
+
+Primeiro, definimos o schema utilizando o método `transform`:
+
+```typescript
+import { z } from 'zod';
+
+const UserSchema = z.object({
+  name: z.string().nonempty("Name is required").transform((val) => val.toUpperCase()),
+  age: z.number().min(18, "You must be at least 18 years old"),
+  email: z.string().email("Invalid email address"),
+});
+
+type UserFormData = z.infer<typeof UserSchema>;
+```
+
+### Utilizando refine`
+
+O método `refine` do Zod permite adicionar validações customizadas que não são cobertas pelos métodos de validação padrão. Isso é útil quando você precisa de validações mais complexas ou específicas.
+
+#### Exemplo
+
+```typescript
+import { z } from 'zod';
+
+const PasswordSchema = z.object({
+  password: z.string().min(6, "Password must be at least 6 characters long"),
+  confirmPassword: z.string().min(6, "Confirm Password must be at least 6 characters long"),
+}).refine(data => data.password === data.confirmPassword, {
+  message: "Passwords don't match",
+  path: ["confirmPassword"],
+});
+
+type PasswordFormData = z.infer<typeof PasswordSchema>;
+```
+
+### Utilizando o `superRefine`
+
+O método `superRefine` do Zod é uma versão avançada de `refine`, permitindo validações complexas e interdependentes em um nível mais detalhado. Ele oferece maior controle sobre como os erros são manipulados, permitindo que você adicione múltiplos erros e especifique caminhos personalizados para cada um.
+
+#### Exemplo
+
+```typescript
+import { z } from 'zod';
+
+const PasswordSchema = z.object({
+  password: z.string().min(6, "Password must be at least 6 characters long"),
+  confirmPassword: z.string().min(6, "Confirm Password must be at least 6 characters long"),
+}).superRefine((data, ctx) => {
+  if (data.password !== data.confirmPassword) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: "Passwords don't match",
+      path: ["confirmPassword"],
+    });
+  }
+
+  if (!/[A-Z]/.test(data.password)) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: "Password must contain at least one uppercase letter",
+      path: ["password"],
+    });
+  }
+
+  if (!/[0-9]/.test(data.password)) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: "Password must contain at least one number",
+      path: ["password"],
+    });
+  }
+});
+
+type PasswordFormData = z.infer<typeof PasswordSchema>;
+```
