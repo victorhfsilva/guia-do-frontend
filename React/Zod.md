@@ -188,3 +188,102 @@ const PasswordSchema = z.object({
 
 type PasswordFormData = z.infer<typeof PasswordSchema>;
 ```
+
+### Utilizando o `coerce` 
+
+O método `coerce` do Zod é uma ferramenta poderosa que permite converter dados de um tipo para outro antes de aplicar validações. Isso é particularmente útil quando você está lidando com dados que podem estar em um formato inesperado ou inconsistente, como strings que representam números ou booleanos.
+
+#### Exemplo
+
+
+```typescript
+import { z } from 'zod';
+
+const NumberFromStringSchema = z.coerce.number();
+
+const result = NumberFromStringSchema.safeParse("42");
+console.log(result.data); // 42
+
+const invalidResult = NumberFromStringSchema.safeParse("not a number");
+console.log(invalidResult.error); // Error about invalid number
+```
+
+### Trabalhando com Arquivos
+
+Para validar arquivos, podemos definir um schema no Zod que verifica se o arquivo está presente e atende a certos critérios, como tipo e tamanho.
+
+```typescript
+import { z } from 'zod';
+
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+const ACCEPTED_FILE_TYPES = ["image/jpeg", "image/png", "image/gif"];
+
+const FileSchema = z.object({
+  file: z
+    .instanceof(File)
+    .refine((file) => file.size <= MAX_FILE_SIZE, {
+      message: "File size should not exceed 5MB",
+    })
+    .refine((file) => ACCEPTED_FILE_TYPES.includes(file.type), {
+      message: "File type must be JPEG, PNG, or GIF",
+    }),
+});
+
+type FileFormData = z.infer<typeof FileSchema>;
+```
+
+#### Configurando o Formulário com React Hook Form
+
+```typescript
+import React from 'react';
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+const ACCEPTED_FILE_TYPES = ["image/jpeg", "image/png", "image/gif"];
+
+const FileSchema = z.object({
+  file: z
+    .instanceof(File)
+    .refine((file) => file.size <= MAX_FILE_SIZE, {
+      message: "File size should not exceed 5MB",
+    })
+    .refine((file) => ACCEPTED_FILE_TYPES.includes(file.type), {
+      message: "File type must be JPEG, PNG, or GIF",
+    }),
+});
+
+type FileFormData = z.infer<typeof FileSchema>;
+
+const FileForm: React.FC = () => {
+  const { control, handleSubmit, formState: { errors } } = useForm<FileFormData>({
+    resolver: zodResolver(FileSchema),
+  });
+
+  const onSubmit = (data: FileFormData) => {
+    console.log("Form Data:", data);
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Controller
+        name="file"
+        control={control}
+        render={({ field }) => (
+          <>
+            <input
+              type="file"
+              onChange={(e) => field.onChange(e.target.files?.[0])}
+            />
+            {errors.file && <span>{errors.file.message}</span>}
+          </>
+        )}
+      />
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
+
+export default FileForm;
+```

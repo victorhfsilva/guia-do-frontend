@@ -186,6 +186,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Contextos](./React/Contextos.md)
 - [React Router](./React/React%20Router.md)
 - [Rotas Protegidas](./React/Rotas%20Protegidas.md)
+- [Parâmetros de Rota com React Router](./React/Parâmetros%20de%20Rota%20com%20React%20Router.md)
 - [Estilização](./React/Estilização.md)
 - [Styled Components](./React/Styled-Components.md)
 - [Themes e Tokens](./React/Themes%20e%20Tokes.md)
