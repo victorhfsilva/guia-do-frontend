@@ -128,6 +128,7 @@ Não se sinta pressionado a seguir cada passo desta trilha rigidamente. O desenv
 - [Funções Assíncronas](./Javascript/Funções%20Assíncronas.md)
 - [Fetch](./Javascript/Fetch.md)
 - [Axios](./Javascript/Axios.md)
+- [Axios Interceptors](./Javascript/Axios%20Interceptors.md)
 - [Modo Estrito](./Javascript/Modo%20Estrito.md)
 - [Browser Object Model](./Javascript/Browser%20Object%20Model.md)
 - [WebStorage](./Javascript/Webstorage.md)
